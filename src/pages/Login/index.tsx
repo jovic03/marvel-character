@@ -1,8 +1,8 @@
-
 import './style.css'
 import { useState } from 'react';
 import axios from 'axios';
 import { loginService } from '../../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 
 interface userLoginObj {
@@ -15,6 +15,8 @@ const Login = (props: any) => {
     email: '',
     senha: '',
   })
+
+  let navigate = useNavigate();
 
   const handleChangesValues = (event: React.ChangeEvent<HTMLInputElement>)  => {
     // faco uma copia do objeto no estado (values) e adiciono as pripriedades digitadas pelo usuario
@@ -30,7 +32,12 @@ const Login = (props: any) => {
   const loginUser = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     const response = await loginService.login(values)
+    const jwt = response.data.token;
 
+    if(jwt) {
+      localStorage.setItem('jwtLocalStorage', jwt);
+      navigate('/');
+    }
     console.log(response.data);
   }
 
