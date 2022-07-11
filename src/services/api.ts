@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL:'http//localhost:3000'//backend
+    baseURL:'https://apimarvelcharacters.onrender.com/doc/'//backend
 })
 
 //toda vez que eu fizer uma chamada quero enviar o token nela
