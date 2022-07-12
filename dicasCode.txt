@@ -1,3 +1,5 @@
 yarn create vite ---criar o projeto vite
 yarn install --- pra instalar as dependencias necessarias
 yarn dev ---pra rodar o code
+yarn add react-modal
+yarn add @types/react-modal
